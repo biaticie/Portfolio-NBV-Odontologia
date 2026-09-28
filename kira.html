@@ -7,6 +7,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<meta name="description" content="Kira Odontologia — Produção audiovisual NBV.">
+
 <title>Kira Odontologia | NBV</title>
 
 <style>
@@ -23,26 +25,43 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+
     background:
-        radial-gradient(circle at 50% 0%, #1c1c1c 0%, #080808 38%);
+        radial-gradient(
+            circle at 50% 0%,
+            #1c1c1c 0%,
+            #080808 38%,
+            #080808 100%
+        );
+
     color: #fff;
+
     line-height: 1.6;
 }
 
+
+/* NAVBAR */
+
 nav {
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
+
     z-index: 1000;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     padding: 20px 6%;
 
     background: rgba(8,8,8,0.75);
+
     backdrop-filter: blur(14px);
 
     border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -50,96 +69,161 @@ nav {
 
 .logo {
     font-size: 22px;
+
     font-weight: 800;
+
     letter-spacing: 3px;
 }
 
 .back-link {
     color: #aaa;
+
     text-decoration: none;
+
     font-size: 14px;
+
+    transition: 0.3s;
 }
 
 .back-link:hover {
     color: #25D366;
 }
 
+
+/* HERO */
+
 .project-hero {
+
     max-width: 1100px;
+
     margin: auto;
+
     padding: 170px 25px 90px;
 }
 
 .tag {
+
     display: inline-block;
+
     color: #25D366;
+
     text-transform: uppercase;
+
     letter-spacing: 4px;
+
     font-size: 11px;
+
     font-weight: bold;
+
     margin-bottom: 22px;
 }
 
 h1 {
+
     font-size: clamp(48px, 8vw, 90px);
+
     line-height: 0.95;
+
     letter-spacing: -4px;
+
     max-width: 900px;
+
     margin-bottom: 30px;
 }
 
 .hero-description {
+
     max-width: 700px;
+
     color: #999;
+
     font-size: 19px;
+
     line-height: 1.7;
 }
 
 .green-line {
+
     width: 60px;
+
     height: 3px;
+
     background: #25D366;
+
     margin-top: 35px;
 }
 
+
+/* PORTFÓLIO */
+
 .portfolio {
+
     max-width: 1100px;
+
     margin: auto;
+
     padding: 20px 25px 120px;
 }
 
 .video-item {
-    margin-bottom: 90px;
+
+    margin-bottom: 100px;
 }
 
 .video-header {
+
     display: flex;
+
     align-items: center;
+
+    justify-content: center;
+
     gap: 20px;
-    margin-bottom: 18px;
+
+    margin-bottom: 20px;
 }
 
 .video-number {
+
     color: #25D366;
+
     font-size: 13px;
+
     font-weight: bold;
+
     letter-spacing: 2px;
 }
 
 .video-name {
+
     color: #888;
+
     font-size: 14px;
+
     text-transform: uppercase;
+
     letter-spacing: 2px;
 }
 
+
+/* PLAYER 9:16 */
+
 .video-box {
+
     position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
+
+    width: min(100%, 520px);
+
+    aspect-ratio: 9 / 16;
+
+    margin: 0 auto;
+
     background: #000;
+
     border-radius: 16px;
+
     overflow: hidden;
+
     border: 1px solid #252525;
 
     box-shadow:
@@ -149,65 +233,118 @@ h1 {
 }
 
 .video-box:hover {
-    border-color: rgba(37,211,102,0.45);
+
+    border-color:
+        rgba(37,211,102,0.45);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,0.65);
 }
 
 .video-box iframe {
+
     position: absolute;
+
     inset: 0;
+
     width: 100%;
+
     height: 100%;
+
     border: 0;
 }
 
+
+/* CTA */
+
 .final-section {
+
     max-width: 1100px;
+
     margin: auto;
+
     padding: 20px 25px 130px;
 }
 
 .final-box {
+
     background:
-        linear-gradient(135deg,#151515,#0d0d0d);
+        linear-gradient(
+            135deg,
+            #151515,
+            #0d0d0d
+        );
 
     border: 1px solid #252525;
+
     border-radius: 18px;
+
     padding: 55px;
+
     text-align: center;
 }
 
 .final-box h2 {
-    font-size: clamp(30px,5vw,48px);
+
+    font-size:
+        clamp(30px,5vw,48px);
+
     margin-bottom: 15px;
 }
 
 .final-box p {
+
     color: #888;
+
     max-width: 600px;
+
     margin: 0 auto 30px;
 }
 
 .button {
+
     display: inline-block;
+
     background: #25D366;
+
     color: white;
+
     text-decoration: none;
+
     padding: 14px 26px;
+
     border-radius: 8px;
+
     font-weight: bold;
+
+    transition: 0.3s;
 }
 
 .button:hover {
+
     background: #1ebe5d;
+
+    transform: translateY(-3px);
 }
 
+
+/* FOOTER */
+
 footer {
+
     text-align: center;
+
     padding: 40px 20px;
+
     border-top: 1px solid #222;
+
     color: #555;
+
     font-size: 13px;
 }
+
+
+/* MOBILE */
 
 @media (max-width:700px) {
 
@@ -221,6 +358,13 @@ footer {
 
     h1 {
         letter-spacing: -2px;
+
+        font-size:
+            clamp(45px,13vw,70px);
+    }
+
+    .hero-description {
+        font-size: 17px;
     }
 
     .portfolio {
@@ -228,11 +372,26 @@ footer {
     }
 
     .video-item {
-        margin-bottom: 65px;
+        margin-bottom: 75px;
+    }
+
+    .video-header {
+        gap: 12px;
+    }
+
+    .video-name {
+        font-size: 12px;
+        letter-spacing: 1.5px;
     }
 
     .video-box {
-        border-radius: 10px;
+
+        width: min(
+            100%,
+            420px
+        );
+
+        border-radius: 12px;
     }
 
     .final-section {
@@ -298,6 +457,8 @@ footer {
 <main class="portfolio">
 
 
+    <!-- VÍDEO 01 -->
+
     <article class="video-item">
 
         <div class="video-header">
@@ -316,7 +477,7 @@ footer {
 
             <iframe
                 src="https://drive.google.com/file/d/1AetvE7NN83QCb8YKRqQo7fXW9cE9lpGN/preview"
-                allow="autoplay"
+                allow="autoplay; fullscreen"
                 allowfullscreen>
             </iframe>
 
@@ -325,6 +486,8 @@ footer {
     </article>
 
 
+
+    <!-- VÍDEO 02 -->
 
     <article class="video-item">
 
@@ -344,7 +507,7 @@ footer {
 
             <iframe
                 src="https://drive.google.com/file/d/1FblI84u8KSr4Kc172TzwXzZqreec3Asv/preview"
-                allow="autoplay"
+                allow="autoplay; fullscreen"
                 allowfullscreen>
             </iframe>
 
@@ -353,6 +516,8 @@ footer {
     </article>
 
 
+
+    <!-- VÍDEO 03 -->
 
     <article class="video-item">
 
@@ -372,7 +537,7 @@ footer {
 
             <iframe
                 src="https://drive.google.com/file/d/15w935zPwxjWW5dU5pHULduNSoY9AZPiL/preview"
-                allow="autoplay"
+                allow="autoplay; fullscreen"
                 allowfullscreen>
             </iframe>
 
@@ -381,6 +546,8 @@ footer {
     </article>
 
 
+
+    <!-- VÍDEO 04 -->
 
     <article class="video-item">
 
@@ -400,7 +567,7 @@ footer {
 
             <iframe
                 src="https://drive.google.com/file/d/16LKXTDKEGILttHVz4KMTlGz6qXQmxyN3/preview"
-                allow="autoplay"
+                allow="autoplay; fullscreen"
                 allowfullscreen>
             </iframe>
 
