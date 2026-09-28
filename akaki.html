@@ -1,17 +1,630 @@
-<iframe
-    src="https://drive.google.com/file/d/1Bd_-q_5_sGksNMaf1CojRUawZDw1Tmd8/preview"
-    allow="autoplay"
-    allowfullscreen>
-</iframe>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<iframe
-    src="https://drive.google.com/file/d/1P9uVQ7iDeHwcBzG5kdU8wLVAaO_2R-CD/preview"
-    allow="autoplay"
-    allowfullscreen>
-</iframe>
+<head>
 
-<iframe
-    src="https://drive.google.com/file/d/1YARtuAp-K1jYvf-0wIJEXjtAABeH0A8S/preview"
-    allow="autoplay"
-    allowfullscreen>
-</iframe>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Akaki Odontologia — Produção audiovisual NBV."
+    >
+
+    <title>Akaki Odontologia | NBV</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    #1c1c1c 0%,
+                    #080808 38%,
+                    #080808 100%
+                );
+
+            color: #ffffff;
+
+            line-height: 1.6;
+        }
+
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 20px 6%;
+
+            background: rgba(8, 8, 8, 0.75);
+
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+
+        .logo {
+            font-size: 22px;
+
+            font-weight: 800;
+
+            letter-spacing: 3px;
+        }
+
+
+        .back-link {
+            color: #aaa;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+
+        .back-link:hover {
+            color: #25D366;
+        }
+
+
+        /* HERO */
+
+        .project-hero {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 170px 25px 90px;
+        }
+
+
+        .tag {
+
+            display: inline-block;
+
+            color: #25D366;
+
+            text-transform: uppercase;
+
+            letter-spacing: 4px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            margin-bottom: 22px;
+        }
+
+
+        h1 {
+
+            font-size: clamp(48px, 8vw, 90px);
+
+            line-height: 0.95;
+
+            letter-spacing: -4px;
+
+            max-width: 900px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .hero-description {
+
+            max-width: 700px;
+
+            color: #999;
+
+            font-size: 19px;
+
+            line-height: 1.7;
+        }
+
+
+        /* LINHA */
+
+        .green-line {
+
+            width: 60px;
+
+            height: 3px;
+
+            background: #25D366;
+
+            margin-top: 35px;
+        }
+
+
+        /* VÍDEOS */
+
+        .portfolio {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 20px 25px 120px;
+        }
+
+
+        .video-item {
+
+            margin-bottom: 90px;
+        }
+
+
+        .video-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .video-number {
+
+            color: #25D366;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+
+        .video-name {
+
+            color: #888;
+
+            font-size: 14px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+        }
+
+
+        .video-box {
+
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            background: #000;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            border: 1px solid #252525;
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.45);
+
+            transition: 0.4s;
+        }
+
+
+        .video-box:hover {
+
+            border-color: rgba(37,211,102,0.45);
+
+            box-shadow:
+                0 30px 90px rgba(0,0,0,0.65);
+        }
+
+
+        .video-box iframe {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            border: 0;
+        }
+
+
+        /* FINAL */
+
+        .final-section {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 20px 25px 130px;
+        }
+
+
+        .final-box {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #151515,
+                    #0d0d0d
+                );
+
+            border: 1px solid #252525;
+
+            border-radius: 18px;
+
+            padding: 55px;
+
+            text-align: center;
+        }
+
+
+        .final-box h2 {
+
+            font-size: clamp(30px, 5vw, 48px);
+
+            margin-bottom: 15px;
+        }
+
+
+        .final-box p {
+
+            color: #888;
+
+            max-width: 600px;
+
+            margin: 0 auto 30px;
+        }
+
+
+        .button {
+
+            display: inline-block;
+
+            background: #25D366;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 14px 26px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .button:hover {
+
+            background: #1ebe5d;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* FOOTER */
+
+        footer {
+
+            text-align: center;
+
+            padding: 40px 20px;
+
+            border-top: 1px solid #222;
+
+            color: #555;
+
+            font-size: 13px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 18px 20px;
+            }
+
+
+            .project-hero {
+
+                padding:
+                    130px 20px 70px;
+            }
+
+
+            h1 {
+
+                letter-spacing: -2px;
+            }
+
+
+            .hero-description {
+
+                font-size: 17px;
+            }
+
+
+            .portfolio {
+
+                padding:
+                    10px 20px 80px;
+            }
+
+
+            .video-item {
+
+                margin-bottom: 65px;
+            }
+
+
+            .video-box {
+
+                border-radius: 10px;
+            }
+
+
+            .final-section {
+
+                padding:
+                    0 20px 80px;
+            }
+
+
+            .final-box {
+
+                padding: 40px 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            NBV
+        </div>
+
+
+        <a
+            class="back-link"
+            href="index.html">
+
+            ← Voltar ao portfólio
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- HERO -->
+
+    <header class="project-hero">
+
+        <span class="tag">
+            Projeto audiovisual
+        </span>
+
+
+        <h1>
+            Akaki<br>
+            Odontologia.
+        </h1>
+
+
+        <p class="hero-description">
+
+            Produção de conteúdo audiovisual desenvolvida
+            para fortalecer a comunicação, a presença digital
+            e a imagem profissional da Akaki Odontologia.
+
+        </p>
+
+
+        <div class="green-line"></div>
+
+    </header>
+
+
+
+    <!-- VÍDEOS -->
+
+    <main class="portfolio">
+
+
+        <!-- VÍDEO 01 -->
+
+        <article class="video-item">
+
+            <div class="video-header">
+
+                <span class="video-number">
+                    01
+                </span>
+
+                <span class="video-name">
+                    Produção audiovisual
+                </span>
+
+            </div>
+
+
+            <div class="video-box">
+
+                <iframe
+                    src="https://drive.google.com/file/d/1Bd_-q_5_sGksNMaf1CojRUawZDw1Tmd8/preview"
+                    allow="autoplay"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- VÍDEO 02 -->
+
+        <article class="video-item">
+
+            <div class="video-header">
+
+                <span class="video-number">
+                    02
+                </span>
+
+                <span class="video-name">
+                    Produção audiovisual
+                </span>
+
+            </div>
+
+
+            <div class="video-box">
+
+                <iframe
+                    src="https://drive.google.com/file/d/1P9uVQ7iDeHwcBzG5kdU8wLVAaO_2R-CD/preview"
+                    allow="autoplay"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- VÍDEO 03 -->
+
+        <article class="video-item">
+
+            <div class="video-header">
+
+                <span class="video-number">
+                    03
+                </span>
+
+                <span class="video-name">
+                    Produção audiovisual
+                </span>
+
+            </div>
+
+
+            <div class="video-box">
+
+                <iframe
+                    src="https://drive.google.com/file/d/1YARtuAp-K1jYvf-0wIJEXjtAABeH0A8S/preview"
+                    allow="autoplay"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </article>
+
+
+    </main>
+
+
+
+    <!-- CTA -->
+
+    <section class="final-section">
+
+        <div class="final-box">
+
+            <h2>
+                Gostou do projeto?
+            </h2>
+
+
+            <p>
+                Quer produzir conteúdos como esses para
+                sua clínica ou marca? Vamos conversar.
+            </p>
+
+
+            <a
+                class="button"
+                href="https://wa.me/5511927033765"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                Falar pelo WhatsApp
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 NBV Odontologia — Produção Audiovisual
+
+    </footer>
+
+
+</body>
+
+</html>
