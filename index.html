@@ -1,822 +1,1170 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080908">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080908">
+<meta name="description" content="NBV Studio — Produção audiovisual, filmes, direção de fotografia, eventos e conteúdo de marca.">
+<title>NBV Studio | Audiovisual & Visual Stories</title>
 
-  <title>NBV Studio | Produção Audiovisual</title>
+<style>
+:root {
+  --bg: #080908;
+  --panel: #111410;
+  --green: #a3f36b;
+  --white: #f5f5f0;
+  --muted: #96998f;
+  --line: rgba(255,255,255,.14);
+}
 
-  <style>
-    :root {
-      --bg: #080908;
-      --surface: #111310;
-      --text: #f5f5f0;
-      --muted: #92958e;
-      --green: #a3f36b;
-      --line: rgba(255,255,255,.13);
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+
+.container {
+  width: min(1200px, 90%);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  color: var(--green);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 700;
+}
+
+/* MENU */
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  padding: 24px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  background: rgba(8,9,8,.65);
+  backdrop-filter: blur(14px);
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.logo span { color: var(--green); }
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  font-size: 12px;
+  transition: color .25s;
+}
+
+.nav-links a:hover { color: var(--green); }
+
+/* ABERTURA CINEMATOGRÁFICA */
+
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 70% 30%, #273021, transparent 45%),
+    #080908;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .24;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    #080908 0%,
+    rgba(8,9,8,.72) 30%,
+    rgba(8,9,8,.12) 100%
+  );
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 160px;
+  padding-bottom: 85px;
+}
+
+.hero h1 {
+  margin-top: 25px;
+  font-size: clamp(54px, 10vw, 130px);
+  line-height: .91;
+  font-weight: 500;
+  letter-spacing: -.075em;
+}
+
+.hero h1 span { color: var(--green); }
+
+.hero-description {
+  max-width: 510px;
+  color: #c2c5bc;
+  font-size: 16px;
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+  padding: 15px 22px;
+  background: var(--green);
+  color: #080908;
+  font-size: 12px;
+  font-weight: 800;
+  transition: transform .25s, background .25s;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  background: #c8ffa7;
+}
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* PISTA DE PROJETOS */
+
+.orbit-section {
+  padding: 110px 0 95px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at center, #151a12 0%, #080908 68%);
+}
+
+.section-heading {
+  text-align: center;
+  padding: 0 20px;
+}
+
+.section-heading h2,
+.section-title {
+  font-size: clamp(38px, 6vw, 76px);
+  font-weight: 500;
+  letter-spacing: -.065em;
+  line-height: 1;
+  margin-top: 18px;
+}
+
+.section-heading h2 span,
+.section-title span { color: var(--green); }
+
+.section-heading p {
+  max-width: 560px;
+  margin: 22px auto 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.orbit {
+  width: min(100%, 1000px);
+  aspect-ratio: 1.65;
+  position: relative;
+  margin: 55px auto 25px;
+  isolation: isolate;
+}
+
+.track {
+  position: absolute;
+  inset: 7% 5%;
+  border: 2px solid #343a2e;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 10px #10130e,
+    0 0 0 12px #272d23,
+    inset 0 0 45px rgba(163,243,107,.035);
+}
+
+.track::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed rgba(163,243,107,.35);
+  border-radius: 50%;
+}
+
+.track::after {
+  content: "NBV TRACK / VISUAL STORIES";
+  position: absolute;
+  left: 50%;
+  bottom: -37px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #72786b;
+}
+
+.orbit-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 3;
+  width: 190px;
+  text-align: center;
+}
+
+.orbit-center .brand {
+  font-size: clamp(48px, 7vw, 76px);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -.09em;
+}
+
+.orbit-center .brand span { color: var(--green); }
+
+.orbit-center p {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.orbit-center a {
+  display: inline-block;
+  color: var(--green);
+  font-size: 10px;
+  margin-top: 13px;
+  letter-spacing: 1px;
+}
+
+.orbit-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  width: clamp(100px, 14vw, 155px);
+  aspect-ratio: 1.12;
+  margin: -55px 0 0 -65px;
+  border: 2px solid #080908;
+  border-radius: 7px;
+  overflow: hidden;
+  background: #181b15;
+  box-shadow: 0 15px 40px #000b;
+  animation: orbit 32s linear infinite;
+  animation-delay: calc(var(--i) * -4s);
+  will-change: transform;
+}
+
+.orbit-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  opacity: .86;
+  transition: opacity .3s, transform .5s;
+}
+
+.orbit-card:hover {
+  border-color: var(--green);
+  z-index: 6;
+}
+
+.orbit-card:hover img {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+.orbit-card .caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 24px 8px 8px;
+  background: linear-gradient(transparent,rgba(0,0,0,.94));
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.orbit.paused .orbit-card {
+  animation-play-state: paused;
+}
+
+.orbit-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+}
+
+.outline-button {
+  color: var(--white);
+  border: 1px solid #41463b;
+  background: transparent;
+  padding: 12px 17px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: .25s;
+}
+
+.outline-button:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* GALERIA */
+
+section.content-section { padding: 105px 0; }
+
+.section-intro {
+  max-width: 620px;
+  color: var(--muted);
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 38px 0 32px;
+}
+
+.filter-btn {
+  border: 1px solid #33382e;
+  background: transparent;
+  color: #c7c9c2;
+  padding: 10px 13px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  color: #080908;
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.portfolio {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 38px 22px;
+}
+
+.project[hidden] { display: none; }
+
+.project-visual {
+  display: block;
+  position: relative;
+  aspect-ratio: 1.45;
+  overflow: hidden;
+  background: #181b15;
+}
+
+.project-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s, opacity .3s;
+}
+
+.project-visual:hover img { transform: scale(1.045); }
+
+.project-visual::after {
+  content: "VER PROJETO ↗";
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: var(--green);
+  color: #080908;
+  padding: 8px 10px;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.project-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding-top: 16px;
+}
+
+.project-meta h3 {
+  font-size: clamp(19px, 2.5vw, 27px);
+  font-weight: 500;
+  letter-spacing: -.04em;
+}
+
+.project-meta p {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.project-category {
+  color: var(--green);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: right;
+  padding-top: 7px;
+}
+
+/* SERVIÇOS */
+
+.services-section {
+  background: var(--panel);
+  border-block: 1px solid var(--line);
+}
+
+.service-list { margin-top: 45px; }
+
+.service-row {
+  display: grid;
+  grid-template-columns: 50px minmax(0,1fr) 25px;
+  align-items: center;
+  gap: 18px;
+  padding: 25px 0;
+  border-bottom: 1px solid #30342d;
+}
+
+.service-number {
+  color: var(--green);
+  font-size: 11px;
+}
+
+.service-row h3 {
+  font-size: clamp(22px,4vw,39px);
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -.045em;
+}
+
+.service-row p {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.service-arrow {
+  color: var(--green);
+  font-size: 20px;
+}
+
+/* SOBRE */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 65px;
+  align-items: center;
+}
+
+.about-visual {
+  min-height: 430px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 40% 40%,#33472a,transparent 50%),
+    #141711;
+  display: grid;
+  place-items: center;
+}
+
+.about-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-mark {
+  font-size: clamp(90px,15vw,180px);
+  font-weight: 900;
+  letter-spacing: -.12em;
+  color: var(--green);
+  opacity: .9;
+}
+
+.about-text {
+  color: var(--muted);
+  margin-top: 23px;
+  font-size: 14px;
+}
+
+/* CONTATO */
+
+.contact-section {
+  padding: 100px 0;
+  background:
+    radial-gradient(ellipse at 85% 80%,#1b2915,transparent 48%),
+    #0d0f0b;
+  border-top: 1px solid var(--line);
+}
+
+.contact-section h2 {
+  margin-top: 22px;
+  font-size: clamp(48px,9vw,110px);
+  line-height: .94;
+  font-weight: 500;
+  letter-spacing: -.075em;
+}
+
+.contact-section h2 span { color: var(--green); }
+
+.contact-section p {
+  max-width: 500px;
+  color: var(--muted);
+  margin-top: 22px;
+  font-size: 14px;
+}
+
+footer {
+  padding: 28px 5%;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+footer a:hover { color: var(--green); }
+
+.whatsapp {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 30;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  color: #080908;
+  font-size: 23px;
+  box-shadow: 0 5px 25px #0007;
+  transition: transform .2s;
+}
+
+.whatsapp:hover { transform: scale(1.08); }
+
+/* ANIMAÇÃO */
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg)
+      translateX(min(29vw, 285px))
+      rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg)
+      translateX(min(29vw, 285px))
+      rotate(-360deg);
+  }
+}
+
+@media (min-width: 1000px) {
+  .orbit-card {
+    width: 150px;
+    margin: -55px 0 0 -75px;
+  }
+}
+
+@media (max-width: 700px) {
+  nav { padding: 17px 5%; }
+  .logo { font-size: 25px; }
+  .nav-links { gap: 13px; }
+  .nav-links a { font-size: 10px; }
+  .hero-content { padding-bottom: 55px; }
+  .hero h1 { letter-spacing: -.07em; }
+  .hero-bottom { font-size: 8px; }
+  .orbit-section { padding: 80px 0 65px; }
+  .orbit { width: 100%; margin: 48px auto 20px; }
+  .track { inset: 10% 1%; }
+  .orbit-center { width: 115px; }
+  .orbit-center .brand { font-size: 43px; }
+  .orbit-center p { font-size: 7px; letter-spacing: 1px; }
+  .orbit-center a { font-size: 9px; }
+  .orbit-card {
+    width: 88px;
+    margin: -39px 0 0 -44px;
+  }
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg) translateX(34vw) rotate(0deg);
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    to {
+      transform: rotate(360deg) translateX(34vw) rotate(-360deg);
     }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(90%, 1400px);
-      margin: auto;
-    }
-
-    /* MENU */
-
-    nav {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 25px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 10;
-      background: rgba(8,9,8,.6);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .logo {
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: -2px;
-    }
-
-    .logo span {
-      color: var(--green);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      transition: color .3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--green);
-    }
-
-    /* ABERTURA CINEMATOGRÁFICA */
-
-    .hero {
-      min-height: 100vh;
-      min-height: 100svh;
-      display: flex;
-      align-items: flex-end;
-      position: relative;
-      overflow: hidden;
-      background: #151713;
-    }
-
-    .hero-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: .55;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.8), transparent),
-        linear-gradient(0deg, #080908, transparent 75%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      padding-top: 150px;
-      padding-bottom: 90px;
-    }
-
-    .eyebrow {
-      color: var(--green);
-      text-transform: uppercase;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 4px;
-    }
-
-    .hero h1 {
-      margin-top: 25px;
-      font-size: clamp(55px, 10vw, 145px);
-      line-height: .9;
-      letter-spacing: -8px;
-      font-weight: 500;
-    }
-
-    .hero h1 span {
-      color: var(--green);
-    }
-
-    .hero-description {
-      max-width: 460px;
-      color: #ccc;
-      margin-top: 30px;
-      font-size: 16px;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 24px;
-      background: var(--green);
-      color: #080908;
-      font-weight: bold;
-      font-size: 12px;
-      transition: .3s;
-    }
-
-    .button:hover {
-      transform: translateY(-3px);
-      background: #c4ffa1;
-    }
-
-    /* PORTFÓLIO */
-
-    section {
-      padding: 110px 0;
-    }
-
-    .section-title {
-      font-size: clamp(38px, 6vw, 75px);
-      line-height: 1;
-      letter-spacing: -4px;
-      font-weight: 500;
-      margin: 20px 0;
-    }
-
-    .section-description {
-      color: var(--muted);
-      max-width: 550px;
-      margin-bottom: 40px;
-    }
-
-    .filters {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 35px;
-    }
-
-    .filter-btn {
-      padding: 10px 15px;
-      color: #ccc;
-      background: transparent;
-      border: 1px solid #333;
-      cursor: pointer;
-    }
-
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: var(--green);
-      color: #080908;
-      border-color: var(--green);
-    }
-
-    .portfolio {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 35px 22px;
-    }
-
-    .project {
-      min-width: 0;
-    }
-
-    .project[hidden] {
-      display: none;
-    }
-
-    .project-image {
-      display: block;
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 1.4;
-      background: #191b17;
-    }
-
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .6s;
-    }
-
-    .project-image:hover img {
-      transform: scale(1.05);
-    }
-
-    .project-info {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      padding-top: 18px;
-    }
-
-    .project-info h3 {
-      font-size: 25px;
-      font-weight: 500;
-    }
-
-    .project-info p {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .category {
-      color: var(--green);
-      font-size: 10px;
-      text-transform: uppercase;
-    }
-
-    /* SERVIÇOS */
-
-    .services {
-      background: var(--surface);
-      border-block: 1px solid var(--line);
-    }
-
-    .service-row {
-      display: grid;
-      grid-template-columns: 50px 1fr 30px;
-      gap: 20px;
-      align-items: center;
-      padding: 28px 0;
-      border-bottom: 1px solid #333;
-    }
-
-    .service-number {
-      color: var(--green);
-      font-size: 12px;
-    }
-
-    .service-row h3 {
-      font-size: clamp(24px, 4vw, 42px);
-      font-weight: 500;
-      letter-spacing: -2px;
-    }
-
-    .service-row p {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 5px;
-    }
-
-    .service-arrow {
-      color: var(--green);
-      font-size: 22px;
-    }
-
-    /* SOBRE */
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-image {
-      width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      background: #191b17;
-    }
-
-    .about-text {
-      color: var(--muted);
-      margin-top: 25px;
-      max-width: 500px;
-    }
-
-    /* CONTATO */
-
-    .contact {
-      background:
-        radial-gradient(circle at 80% 80%, #1b2717, transparent 50%),
-        #10120e;
-      border-top: 1px solid var(--line);
-    }
-
-    .contact h2 {
-      font-size: clamp(45px, 9vw, 110px);
-      line-height: .95;
-      letter-spacing: -6px;
-      font-weight: 500;
-    }
-
-    .contact h2 span {
-      color: var(--green);
-    }
-
-    footer {
-      padding: 30px 5%;
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    /* WHATSAPP */
-
-    .whatsapp {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 20;
-      width: 56px;
-      height: 56px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--green);
-      color: #080908;
-      font-size: 24px;
-    }
-
-    @media (max-width: 700px) {
-      nav {
-        padding: 20px;
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
-
-      .nav-links a {
-        font-size: 10px;
-      }
-
-      .hero h1 {
-        letter-spacing: -4px;
-      }
-
-      .portfolio {
-        grid-template-columns: 1fr;
-      }
-
-      .about {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .service-row {
-        grid-template-columns: 30px 1fr 20px;
-        gap: 10px;
-      }
-
-      .contact h2 {
-        letter-spacing: -3px;
-      }
-
-      footer {
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .nav-links {
-        gap: 9px;
-      }
-
-      .nav-links a {
-        font-size: 9px;
-      }
-    }
-  </style>
+  }
+  section.content-section { padding: 75px 0; }
+  .portfolio { grid-template-columns: 1fr; gap: 30px; }
+  .about-grid { grid-template-columns: 1fr; gap: 35px; }
+  .about-visual { min-height: 300px; }
+  .service-row { grid-template-columns: 28px minmax(0,1fr) 20px; gap: 10px; }
+  .service-row h3 { font-size: 24px; }
+  .contact-section { padding: 80px 0; }
+  footer { flex-wrap: wrap; }
+}
+
+@media (max-width: 380px) {
+  .nav-links { gap: 8px; }
+  .nav-links a { font-size: 9px; }
+  .orbit-card { width: 76px; margin: -34px 0 0 -38px; }
+  .orbit-center .brand { font-size: 36px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
 </head>
+
 <body>
 
-  <!-- MENU -->
-  <nav>
-    <a class="logo" href="#inicio">NBV<span>.</span></a>
+<!-- MENU -->
+<nav>
+  <a class="logo" href="#inicio">NBV<span>.</span></a>
+  <div class="nav-links">
+    <a href="#pista">Experiência</a>
+    <a href="#trabalhos">Projetos</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contato">Contato ↗</a>
+  </div>
+</nav>
 
-    <div class="nav-links">
-      <a href="#trabalhos">Trabalhos</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato ↗</a>
+<!-- ABERTURA -->
+<header class="hero" id="inicio">
+  <!-- OPCIONAL: coloque hero-poster.jpg na raiz do repositório -->
+  <img class="hero-bg" src="hero-poster.jpg" alt=""
+       onerror="this.style.display='none'">
+
+  <div class="container hero-content">
+    <div class="eyebrow">Independent audiovisual studio</div>
+    <h1>Visuals with<br><span>intention.</span></h1>
+    <p class="hero-description">
+      Criamos imagens que despertam sensações, aproximam marcas
+      e transformam histórias em experiências visuais.
+    </p>
+    <a class="button" href="#pista">EXPLORAR O UNIVERSO NBV ↘</a>
+
+    <div class="hero-bottom">
+      <span>Filmes · Marcas · Histórias</span>
+      <span>Brasil · 2026</span>
     </div>
-  </nav>
+  </div>
+</header>
+</body>
+</html>
 
-  <!-- ABERTURA CINEMATOGRÁFICA -->
-  <header class="hero" id="inicio">
+<!-- PISTA DE SKATE / PROJETOS EM ÓRBITA -->
+<section class="orbit-section" id="pista">
+  <div class="section-heading">
+    <div class="eyebrow">Uma volta pelo nosso universo</div>
+    <h2>Feito para sair<br>do <span>comum.</span></h2>
+    <p>
+      Cada projeto tem seu ritmo, sua identidade e sua história.
+      Explore o universo audiovisual da NBV.
+    </p>
+  </div>
 
-    <!-- Substitua hero-poster.jpg pela sua imagem de capa -->
-    <img class="hero-image"
-         src="hero-poster.jpg"
-         alt="Produção audiovisual NBV"
-         onerror="this.style.display='none'">
+  <div class="orbit" id="orbit">
+    <div class="track"></div>
 
-    <div class="hero-overlay"></div>
+    <div class="orbit-center">
+      <div class="brand">NBV<span>.</span></div>
+      <p>Visual stories studio</p>
+      <a href="#trabalhos">VER PROJETOS ↗</a>
+    </div>
 
-    <div class="container hero-content">
+    <!-- TROQUE os arquivos abaixo pelas suas imagens -->
+    <a class="orbit-card" style="--i:0" href="#trabalhos">
+      <img src="Akaki.jpeg" alt="Projeto de clínica odontológica"
+           onerror="this.src='https://placehold.co/500x400/20251c/a3f36b?text=CLINICAS'">
+      <span class="caption">CLÍNICAS</span>
+    </a>
 
-      <div class="eyebrow">
-        Produção audiovisual independente
-      </div>
+    <a class="orbit-card" style="--i:1" href="#trabalhos">
+      <img src="casamento.jpg" alt="Filme de casamento"
+           onerror="this.src='https://placehold.co/500x400/20251c/a3f36b?text=WEDDINGS'">
+      <span class="caption">CASAMENTOS</span>
+    </a>
 
-      <h1>
-        Imagens que<br>
-        criam <span>impacto.</span>
-      </h1>
+    <a class="orbit-card" style="--i:2" href="#trabalhos">
+      <img src="evento.jpg" alt="Produção audiovisual de evento"
+           onerror="this.src='https://placehold.co/500x400/20251c/a3f36b?text=EVENTOS'">
+      <span class="caption">EVENTOS</span>
+    </a>
 
-      <p class="hero-description">
-        Transformamos ideias em experiências visuais.
-        Filmes, marcas e histórias construídos com
-        intenção, estética e identidade.
-      </p>
+    <a class="orbit-card" style="--i:3" href="#trabalhos">
+      <img src="esporte.jpg" alt="Produção audiovisual esportiva"
+           onerror="this.src='https://placehold.co/500x400/20251c/a3f36b?text=SPORTS'">
+      <span class="caption">ESPORTES</span>
+    </a>
 
-      <a href="#trabalhos" class="button">
-        EXPLORAR PROJETOS ↘
-      </a>
+    <a class="orbit-card" style="--i:4" href="#trabalhos">
+      <img src="fotografia.jpg" alt="Direção de fotografia"
+           onerror="this.src='https://placehold.co/500x400/20251c/a3f36b?text=CINEMATOGRAPHY'">
+      <span class="caption">DIREÇÃO DE FOTO</span>
+    </a>
+
+    <a class="orbit-card" style="--i:5" href="#trabalhos">
+      <img src="social-media.jpg" alt="Conteúdo para redes sociais"
+           onerror="this.src='https://placehold.co/500x400/20251c/a3f36b?text=SOCIAL+MEDIA'">
+      <span class="caption">SOCIAL MEDIA</span>
+    </a>
+
+    <a class="orbit-card" style="--i:6" href="#trabalhos">
+      <img src="colorimetria.jpg" alt="Trabalho de color grading"
+           onerror="this.src='https://placehold.co/500x400/20251c/a3f36b?text=COLOR+GRADING'">
+      <span class="caption">COLOR GRADING</span>
+    </a>
+  </div>
+
+  <div class="orbit-controls">
+    <button class="outline-button" id="orbit-toggle" type="button">
+      PAUSAR MOVIMENTO
+    </button>
+    <a class="outline-button" href="#trabalhos">EXPLORAR GALERIA ↘</a>
+  </div>
+</section>
+
+
+<!-- GALERIA FILTRÁVEL -->
+<section class="content-section" id="trabalhos">
+  <div class="container">
+    <div class="eyebrow">Portfólio selecionado</div>
+    <h2 class="section-title">Projetos que<br>falam <span>por si.</span></h2>
+    <p class="section-intro">
+      Uma seleção de histórias, marcas e experiências capturadas
+      através da nossa perspectiva audiovisual.
+    </p>
+
+    <!-- FILTROS -->
+    <div class="filters" aria-label="Filtrar projetos">
+      <button class="filter-btn active" data-filter="todos" type="button">Todos</button>
+      <button class="filter-btn" data-filter="clinicas" type="button">Clínicas</button>
+      <button class="filter-btn" data-filter="casamentos" type="button">Casamentos</button>
+      <button class="filter-btn" data-filter="eventos" type="button">Eventos</button>
+      <button class="filter-btn" data-filter="esporte" type="button">Esporte</button>
+      <button class="filter-btn" data-filter="fotografia" type="button">Direção de fotografia</button>
+      <button class="filter-btn" data-filter="social" type="button">Social media</button>
+      <button class="filter-btn" data-filter="cor" type="button">Color grading</button>
+    </div>
+
+    <div class="portfolio" id="portfolio-grid">
+
+      <!-- PROJETO 1: CLÍNICA AKAKI -->
+      <article class="project" data-category="clinicas">
+        <a class="project-visual" href="akaki.html">
+          <img src="Akaki.jpeg" alt="Projeto audiovisual Akaki Odontologia"
+               loading="lazy">
+        </a>
+        <div class="project-meta">
+          <div>
+            <h3>Akaki Odontologia</h3>
+            <p>Conteúdo audiovisual para marca odontológica.</p>
+          </div>
+          <span class="project-category">Clínicas</span>
+        </div>
+      </article>
+
+      <!-- PROJETO 2: CLÍNICA WEISS -->
+      <article class="project" data-category="clinicas">
+        <a class="project-visual" href="weiss.html">
+          <img src="Weiss.jpeg" alt="Projeto audiovisual Clínica Weiss"
+               loading="lazy">
+        </a>
+        <div class="project-meta">
+          <div>
+            <h3>Clínica Weiss</h3>
+            <p>Imagem e comunicação profissional.</p>
+          </div>
+          <span class="project-category">Clínicas</span>
+        </div>
+      </article>
+
+      <!-- PROJETO 3: KIRA -->
+      <article class="project" data-category="clinicas">
+        <a class="project-visual" href="kira.html">
+          <img src="Kira.jpeg" alt="Projeto audiovisual Kira Odontologia"
+               loading="lazy">
+        </a>
+        <div class="project-meta">
+          <div>
+            <h3>Kira Odontologia</h3>
+            <p>Conteúdo para presença digital.</p>
+          </div>
+          <span class="project-category">Clínicas</span>
+        </div>
+      </article>
+
+      <!-- PROJETO 4: CASAMENTO
+           Coloque sua imagem em casamento.jpg -->
+      <article class="project" data-category="casamentos">
+        <a class="project-visual" href="#contato">
+          <img src="casamento.jpg" alt="Filme de casamento" loading="lazy"
+               onerror="this.src='https://placehold.co/900x600/20251c/a3f36b?text=SEU+FILME+DE+CASAMENTO'">
+        </a>
+        <div class="project-meta">
+          <div>
+            <h3>Wedding Film</h3>
+            <p>Histórias reais, registradas para durar.</p>
+          </div>
+          <span class="project-category">Casamentos</span>
+        </div>
+      </article>
+
+      <!-- PROJETO 5: EVENTOS -->
+      <article class="project" data-category="eventos">
+        <a class="project-visual" href="#contato">
+          <img src="evento.jpg" alt="Cobertura audiovisual de evento"
+               loading="lazy"
+               onerror="this.src='https://placehold.co/900x600/20251c/a3f36b?text=SEU+PROJETO+DE+EVENTO'">
+        </a>
+        <div class="project-meta">
+          <div>
+            <h3>Event Films</h3>
+            <p>Momentos, energia e experiências.</p>
+          </div>
+          <span class="project-category">Eventos</span>
+        </div>
+      </article>
+
+      <!-- PROJETO 6: ESPORTE -->
+      <article class="project" data-category="esporte">
+        <a class="project-visual" href="#contato">
+          <img src="esporte.jpg" alt="Produção audiovisual esportiva"
+               loading="lazy"
+               onerror="this.src='https://placehold.co/900x600/20251c/a3f36b?text=SEU+PROJETO+ESPORTIVO'">
+        </a>
+        <div class="project-meta">
+          <div>
+            <h3>Motion & Sport</h3>
+            <p>Movimento, intensidade e performance.</p>
+          </div>
+          <span class="project-category">Esporte</span>
+        </div>
+      </article>
+
+      <!-- PROJETO 7: DIREÇÃO DE FOTOGRAFIA -->
+      <article class="project" data-category="fotografia">
+        <a class="project-visual" href="#contato">
+          <img src="fotografia.jpg" alt="Direção de fotografia cinematográfica"
+               loading="lazy"
+               onerror="this.src='https://placehold.co/900x600/20251c/a3f36b?text=DIRECAO+DE+FOTOGRAFIA'">
+        </a>
+        <div class="project-meta">
+          <div>
+            <h3>Visual Direction</h3>
+            <p>Composição, luz e narrativa visual.</p>
+          </div>
+          <span class="project-category">Fotografia</span>
+        </div>
+      </article>
+
+      <!-- PROJETO 8: SOCIAL MEDIA -->
+      <article class="project" data-category="social">
+        <a class="project-visual" href="#contato">
+          <img src="social-media.jpg" alt="Conteúdo audiovisual para redes sociais"
+               loading="lazy"
+               onerror="this.src='https://placehold.co/900x600/20251c/a3f36b?text=SOCIAL+MEDIA'">
+        </a>
+        <div class="project-meta">
+          <div>
+            <h3>Social Content</h3>
+            <p>Conteúdo criativo para marcas e plataformas digitais.</p>
+          </div>
+          <span class="project-category">Social media</span>
+        </div>
+      </article>
+
+      <!-- PROJETO 9: COLOR GRADING -->
+      <article class="project" data-category="cor">
+        <a class="project-visual" href="#contato">
+          <img src="colorimetria.jpg" alt="Color grading de vídeo"
+               loading="lazy"
+               onerror="this.src='https://placehold.co/900x600/20251c/a3f36b?text=COLOR+GRADING'">
+        </a>
+        <div class="project-meta">
+          <div>
+            <h3>Color Grading</h3>
+            <p>Tratamento de cor e identidade cinematográfica.</p>
+          </div>
+          <span class="project-category">Pós-produção</span>
+        </div>
+      </article>
 
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- PORTFÓLIO -->
-  <section id="trabalhos">
-    <div class="container">
 
-      <div class="eyebrow">01 / Portfólio</div>
+<!-- SERVIÇOS -->
+<section class="content-section services-section" id="servicos">
+  <div class="container">
+    <div class="eyebrow">O que fazemos</div>
+    <h2 class="section-title">Sete caminhos.<br><span>Uma visão.</span></h2>
+    <p class="section-intro">
+      Da captação à finalização, unimos técnica, criatividade e
+      intenção para transformar ideias em narrativas visuais.
+    </p>
 
-      <h2 class="section-title">
-        Trabalhos em movimento<span style="color:var(--green)">.</span>
-      </h2>
+    <div class="service-list">
 
-      <p class="section-description">
-        Uma seleção de projetos audiovisuais,
-        campanhas e histórias contadas através de imagens.
-      </p>
-
-      <!-- FILTROS -->
-      <div class="filters">
-        <button class="filter-btn active" data-filter="todos">Todos</button>
-        <button class="filter-btn" data-filter="clinicas">Clínicas</button>
-        <button class="filter-btn" data-filter="casamentos">Casamentos</button>
-        <button class="filter-btn" data-filter="eventos">Eventos</button>
-        <button class="filter-btn" data-filter="esporte">Esporte</button>
-        <button class="filter-btn" data-filter="fotografia">Direção de fotografia</button>
-        <button class="filter-btn" data-filter="social">Social media</button>
-        <button class="filter-btn" data-filter="color">Color grading</button>
-      </div>
-
-      <!-- PROJETOS -->
-      <div class="portfolio" id="portfolio">
-
-        <article class="project" data-category="clinicas">
-          <a href="akaki.html" class="project-image">
-            <img src="Akaki.jpeg" alt="Akaki Odontologia" loading="lazy">
-          </a>
-          <div class="project-info">
-            <div>
-              <h3>Akaki Odontologia</h3>
-              <p>Produção audiovisual para marcas</p>
-            </div>
-            <span class="category">Clínicas</span>
-          </div>
-        </article>
-
-        <article class="project" data-category="clinicas">
-          <a href="weiss.html" class="project-image">
-            <img src="Weiss.jpeg" alt="Clínica Weiss" loading="lazy">
-          </a>
-          <div class="project-info">
-            <div>
-              <h3>Clínica Weiss</h3>
-              <p>Filme institucional</p>
-            </div>
-            <span class="category">Clínicas</span>
-          </div>
-        </article>
-
-        <article class="project" data-category="clinicas">
-          <a href="kira.html" class="project-image">
-            <img src="Kira.jpeg" alt="Kira Odontologia" loading="lazy">
-          </a>
-          <div class="project-info">
-            <div>
-              <h3>Kira Odontologia</h3>
-              <p>Conteúdo de marca</p>
-            </div>
-            <span class="category">Clínicas</span>
-          </div>
-        </article>
-
-        <!-- TROQUE OS CAMINHOS ABAIXO PELAS SUAS IMAGENS -->
-
-        <article class="project" data-category="casamentos">
-          <a href="#contato" class="project-image">
-            <img src="imagens/casamento-01.jpg"
-                 alt="Filme de casamento"
-                 loading="lazy">
-          </a>
-          <div class="project-info">
-            <div>
-              <h3>Wedding Film</h3>
-              <p>Histórias e emoções</p>
-            </div>
-            <span class="category">Casamentos</span>
-          </div>
-        </article>
-
-        <article class="project" data-category="eventos">
-          <a href="#contato" class="project-image">
-            <img src="imagens/evento-01.jpg"
-                 alt="Produção de evento"
-                 loading="lazy">
-          </a>
-          <div class="project-info">
-            <div>
-              <h3>Event Film</h3>
-              <p>Experiência e cobertura</p>
-            </div>
-            <span class="category">Eventos</span>
-          </div>
-        </article>
-
-        <article class="project" data-category="esporte">
-          <a href="#contato" class="project-image">
-            <img src="imagens/esporte-01.jpg"
-                 alt="Produção audiovisual esportiva"
-                 loading="lazy">
-          </a>
-          <div class="project-info">
-            <div>
-              <h3>Beyond Limits</h3>
-              <p>Performance e movimento</p>
-            </div>
-            <span class="category">Esporte</span>
-          </div>
-        </article>
-
-        <article class="project" data-category="fotografia">
-          <a href="#contato" class="project-image">
-            <img src="imagens/direcao-fotografia-01.jpg"
-                 alt="Direção de fotografia"
-                 loading="lazy">
-          </a>
-          <div class="project-info">
-            <div>
-              <h3>Visual Studies</h3>
-              <p>Luz, composição e estética</p>
-            </div>
-            <span class="category">Fotografia</span>
-          </div>
-        </article>
-
-        <article class="project" data-category="social">
-          <a href="#contato" class="project-image">
-            <img src="imagens/social-media-01.jpg"
-                 alt="Produção de conteúdo para redes sociais"
-                 loading="lazy">
-          </a>
-          <div class="project-info">
-            <div>
-              <h3>Social Content</h3>
-              <p>Reels e conteúdo digital</p>
-            </div>
-            <span class="category">Social media</span>
-          </div>
-        </article>
-
-        <article class="project" data-category="color">
-          <a href="#contato" class="project-image">
-            <img src="imagens/color-grading-01.jpg"
-                 alt="Color grading audiovisual"
-                 loading="lazy">
-          </a>
-          <div class="project-info">
-            <div>
-              <h3>Color Studies</h3>
-              <p>Correção de cor e finalização</p>
-            </div>
-            <span class="category">Color grading</span>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVIÇOS -->
-  <section class="services" id="servicos">
-    <div class="container">
-
-      <div class="eyebrow">02 / Especialidades</div>
-
-      <h2 class="section-title">
-        Do conceito à<br>
-        <span style="color:var(--green)">imagem final.</span>
-      </h2>
-
-      <p class="section-description">
-        Soluções audiovisuais pensadas para cada projeto,
-        da criação à finalização.
-      </p>
-
-      <div class="service-row">
+      <a class="service-row" href="#trabalhos">
         <span class="service-number">01</span>
         <div>
-          <h3>Clínicas</h3>
-          <p>Filmes institucionais e conteúdo para marcas da área da saúde.</p>
+          <h3>Clínicas & marcas</h3>
+          <p>Filmes institucionais, apresentação de equipes e conteúdo de marca.</p>
         </div>
         <span class="service-arrow">↗</span>
-      </div>
+      </a>
 
-      <div class="service-row">
+      <a class="service-row" href="#trabalhos">
         <span class="service-number">02</span>
         <div>
           <h3>Casamentos</h3>
-          <p>Filmes autorais para eternizar histórias e momentos únicos.</p>
+          <p>Filmes emocionais com narrativa, sensibilidade e estética cinematográfica.</p>
         </div>
         <span class="service-arrow">↗</span>
-      </div>
+      </a>
 
-      <div class="service-row">
+      <a class="service-row" href="#trabalhos">
         <span class="service-number">03</span>
         <div>
           <h3>Eventos</h3>
-          <p>Aftermovies, eventos corporativos e lançamentos.</p>
+          <p>Cobertura audiovisual, aftermovies e registros de experiências.</p>
         </div>
         <span class="service-arrow">↗</span>
-      </div>
+      </a>
 
-      <div class="service-row">
+      <a class="service-row" href="#trabalhos">
         <span class="service-number">04</span>
         <div>
-          <h3>Esporte</h3>
-          <p>Vídeos de atletas, competições e campanhas esportivas.</p>
+          <h3>Esporte & movimento</h3>
+          <p>Vídeos de performance, ação, bastidores e campanhas esportivas.</p>
         </div>
         <span class="service-arrow">↗</span>
-      </div>
+      </a>
 
-      <div class="service-row">
+      <a class="service-row" href="#trabalhos">
         <span class="service-number">05</span>
         <div>
           <h3>Direção de fotografia</h3>
-          <p>Iluminação, composição e identidade visual cinematográfica.</p>
+          <p>Construção visual através de luz, enquadramento, composição e movimento de câmera.</p>
         </div>
         <span class="service-arrow">↗</span>
-      </div>
+      </a>
 
-      <div class="service-row">
+      <a class="service-row" href="#trabalhos">
         <span class="service-number">06</span>
         <div>
           <h3>Social media</h3>
-          <p>Reels, vídeos verticais e conteúdo para redes sociais.</p>
+          <p>Reels, vídeos verticais e conteúdo audiovisual pensado para redes sociais.</p>
         </div>
         <span class="service-arrow">↗</span>
-      </div>
+      </a>
 
-      <div class="service-row">
+      <a class="service-row" href="#trabalhos">
         <span class="service-number">07</span>
         <div>
-          <h3>Pós-produção e color grading</h3>
-          <p>Edição, correção de cor e acabamento profissional.</p>
+          <h3>Color grading & pós-produção</h3>
+          <p>Correção e tratamento de cor para criar atmosfera e consistência visual.</p>
         </div>
         <span class="service-arrow">↗</span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SOBRE -->
-  <section id="sobre">
-    <div class="container about">
-
-      <img class="about-image"
-           src="imagens/bastidores-nbv.jpg"
-           alt="Bastidores da produção NBV"
-           loading="lazy">
-
-      <div>
-        <div class="eyebrow">03 / Sobre a NBV</div>
-
-        <h2 class="section-title">
-          Mais do que registrar.<br>
-          <span style="color:var(--green)">Criar histórias.</span>
-        </h2>
-
-        <p class="about-text">
-          A NBV transforma ideias em experiências audiovisuais,
-          unindo criatividade, técnica e identidade visual
-          para contar histórias que merecem ser vistas.
-        </p>
-
-        <a href="#contato" class="button">CRIAR UM PROJETO ↗</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONTATO -->
-  <section class="contact" id="contato">
-    <div class="container">
-
-      <div class="eyebrow">04 / Próximo projeto</div>
-
-      <h2>
-        Vamos criar<br>
-        algo <span>memorável?</span>
-      </h2>
-
-      <p class="section-description">
-        Conte sua ideia para nós e vamos conversar
-        sobre seu próximo projeto audiovisual.
-      </p>
-
-      <a class="button"
-         href="https://wa.me/5511927033765"
-         target="_blank"
-         rel="noopener noreferrer">
-        FALAR PELO WHATSAPP ↗
       </a>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- RODAPÉ -->
-  <footer>
-    <a class="logo" href="#inicio">NBV<span>.</span></a>
+<!-- SOBRE A NBV -->
+<section class="content-section" id="sobre">
+  <div class="container about-grid">
+    <div class="about-visual">
+      <!-- OPCIONAL: adicione uma foto chamada equipe.jpg na raiz -->
+      <img src="equipe.jpg" alt="Equipe NBV em produção audiovisual"
+           loading="lazy"
+           onerror="this.style.display='none'">
+      <div class="about-mark">NBV.</div>
+    </div>
 
-    <p>© 2026 NBV Studio — Produção Audiovisual</p>
+    <div>
+      <div class="eyebrow">Além da imagem</div>
+      <h2 class="section-title">Não é só<br>sobre <span>filmar.</span></h2>
+      <p class="about-text">
+        Acreditamos que toda marca, pessoa e experiência tem uma
+        história que merece ser contada de forma única.
+        Unimos olhar criativo, técnica e cuidado em cada etapa
+        da produção, da primeira ideia à imagem final.
+      </p>
+      <p class="about-text">
+        Da direção de fotografia à finalização, criamos imagens
+        com personalidade, intenção e identidade visual.
+      </p>
+      <a class="button" href="#contato">VAMOS CRIAR ALGO ↗</a>
+    </div>
+  </div>
+</section>
 
-    <a href="#inicio">Voltar ao topo ↑</a>
-  </footer>
 
-  <!-- WHATSAPP FLUTUANTE -->
-  <a class="whatsapp"
-     href="https://wa.me/5511927033765"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="Falar pelo WhatsApp">
-    ☎
-  </a>
-    <!-- JAVASCRIPT -->
-  <script>
-    // FILTROS DO PORTFÓLIO
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const projects = document.querySelectorAll(".project");
+<!-- CONTATO -->
+<section class="contact-section" id="contato">
+  <div class="container">
+    <div class="eyebrow">Seu próximo projeto começa aqui</div>
+    <h2>Vamos criar<br>algo <span>incrível?</span></h2>
+    <p>
+      Tem uma ideia, um evento ou uma história para contar?
+      Fale com a NBV e vamos transformar sua visão em uma
+      experiência audiovisual.
+    </p>
 
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const category = button.dataset.filter;
+    <!-- Número configurado com base no link que você já utilizava -->
+    <a class="button"
+       href="https://wa.me/5511927033765?text=Ol%C3%A1%2C%20NBV%21%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20audiovisual."
+       target="_blank"
+       rel="noopener noreferrer">
+      FALAR PELO WHATSAPP ↗
+    </a>
+  </div>
+</section>
 
-        // Atualiza o botão selecionado
-        filterButtons.forEach((btn) => {
-          btn.classList.remove("active");
-        });
 
-        button.classList.add("active");
+<!-- RODAPÉ -->
+<footer>
+  <a class="logo" href="#inicio">NBV<span>.</span></a>
+  <p>© <span id="year">2026</span> NBV Studio. Todos os direitos reservados.</p>
+  <a href="#inicio">VOLTAR AO TOPO ↑</a>
+</footer>
 
-        // Exibe somente os projetos da categoria
-        projects.forEach((project) => {
-          const projectCategory = project.dataset.category;
 
-          if (category === "todos" || projectCategory === category) {
-            project.hidden = false;
-          } else {
-            project.hidden = true;
-          }
-        });
+<!-- BOTÃO FLUTUANTE WHATSAPP -->
+<a class="whatsapp"
+   href="https://wa.me/5511927033765"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Conversar com a NBV pelo WhatsApp"
+   title="Fale com a NBV">
+  <svg viewBox="0 0 24 24" width="25" height="25"
+       fill="currentColor" aria-hidden="true">
+    <path d="M20.52 3.48A11.82 11.82 0 0 0 12.04 0C5.48 0 .14 5.34.14 11.9c0 2.1.55 4.15 1.6 5.96L.04 24l6.3-1.65a11.9 11.9 0 0 0 5.69 1.45h.01c6.56 0 11.9-5.34 11.9-11.9a11.82 11.82 0 0 0-3.42-8.42ZM12.04 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.74.98 1-3.65-.24-.38a9.86 9.86 0 0 1-1.52-5.26c0-5.47 4.45-9.92 9.92-9.92a9.86 9.86 0 0 1 7.02 2.91 9.86 9.86 0 0 1 2.9 7.02c0 5.47-4.45 9.92-9.93 9.92Zm5.45-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.28.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.5 1.69.64.71.23 1.35.2 1.86.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+  </svg>
+</a>
+
+
+<!-- FUNCIONALIDADES: FILTROS E PISTA -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Atualiza automaticamente o ano do rodapé
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+
+  // FILTROS DA GALERIA
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projects = document.querySelectorAll(".project");
+
+  filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      const filter = button.dataset.filter;
+
+      filterButtons.forEach(function (item) {
+        item.classList.remove("active");
+        item.setAttribute("aria-pressed", "false");
+      });
+
+      button.classList.add("active");
+      button.setAttribute("aria-pressed", "true");
+
+      projects.forEach(function (project) {
+        const category = project.dataset.category;
+        project.hidden = filter !== "todos" && category !== filter;
       });
     });
-  </script>
+
+    button.setAttribute(
+      "aria-pressed",
+      button.classList.contains("active") ? "true" : "false"
+    );
+  });
+
+  // CONTROLE DA PISTA GIRATÓRIA
+  const orbit = document.getElementById("orbit");
+  const toggle = document.getElementById("orbit-toggle");
+
+  if (orbit && toggle) {
+    toggle.addEventListener("click", function () {
+      const paused = orbit.classList.toggle("paused");
+
+      toggle.textContent = paused
+        ? "RETOMAR MOVIMENTO"
+        : "PAUSAR MOVIMENTO";
+
+      toggle.setAttribute("aria-pressed", paused ? "true" : "false");
+    });
+  }
+});
+</script>
 
 </body>
 </html>
